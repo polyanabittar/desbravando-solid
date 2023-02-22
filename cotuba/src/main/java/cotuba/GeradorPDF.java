@@ -14,16 +14,21 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class GeradorPDF {
-
-    public void gera(Path arquivoDeSaida) {
+    public void gera(Ebook ebook) {
+        Path arquivoDeSaida = ebook.getArquivoDeSaida();
 
         try (var writer = new PdfWriter(Files.newOutputStream(arquivoDeSaida));
              var pdf = new PdfDocument(writer);
              var pdfDocument = new Document(pdf)) {
-            List<IElement> convertToElements = HtmlConverter.convertToElements(html);
-            for (IElement element : convertToElements) {
-                pdfDocument.add((IBlockElement) element);
-            }
+
+             for (Capitulo capitulo: ebook.getCapitulos()) {
+                 String html = capitulo.getConteudoHTML();
+                 List<IElement> convertToElements = HtmlConverter.convertToElements(html);
+
+                 for (IElement element : convertToElements) {
+                     pdfDocument.add((IBlockElement) element);
+                 }
+             }
             // TODO: não adicionar página depois do último capítulo
             pdfDocument.add(new AreaBreak(AreaBreakType.NEXT_PAGE));
         } catch (Exception ex) {
