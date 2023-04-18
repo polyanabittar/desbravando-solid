@@ -1,6 +1,7 @@
 package cotuba;
 
 import java.nio.file.Path;
+import java.util.Objects;
 
 public class Main {
 
@@ -10,30 +11,33 @@ public class Main {
         String formato;
         Path arquivoDeSaida;
         boolean modoVerboso = false;
+        Ebook ebook = new Ebook();
+        GeradorPDF geradorPDF = new GeradorPDF();
+        GeradorEPUB geradorEPUB = new GeradorEPUB();
 
         try {
             var opcoesCLI = new LeitorOpcoesCLI(args);
+            var renderizadorMDParaHTML = new RenderizadorMDParaHTML();
 
             diretorioDosMD = opcoesCLI.getDiretorioDosMD();
             formato = opcoesCLI.getFormato();
             arquivoDeSaida = opcoesCLI.getArquivoDeSaida();
             modoVerboso = opcoesCLI.isModoVerboso();
 
+            var capitulos = renderizadorMDParaHTML.renderiza(diretorioDosMD);
+
+            ebook.setFormato(formato);
+            ebook.setCapitulos(capitulos);
+            ebook.setArquivoDeSaida(arquivoDeSaida);
+
             if ("pdf".equals(formato)) {
-                var geradorPDF = new GeradorPDF();
-                var renderizadorMDParaHTML = new RenderizadorMDParaHTML();
-
-                renderizadorMDParaHTML.renderiza(diretorioDosMD);
-                geradorPDF.gera(arquivoDeSaida);
+                geradorPDF.gera(ebook);
             } else if ("epub".equals(formato)) {
-                var geradorEPUB = new GeradorEPUB();
-                var renderizadorMDParaHTML = new RenderizadorMDParaHTML();
-
-                renderizadorMDParaHTML.renderiza(diretorioDosMD);
-                geradorEPUB.gera(arquivoDeSaida);
+                geradorEPUB.gera(ebook);
             } else {
                 throw new IllegalArgumentException("Formato do ebook inválido: " + formato);
             }
+
             System.out.println("Arquivo gerado com sucesso: " + arquivoDeSaida);
         } catch (
                 Exception ex) {
