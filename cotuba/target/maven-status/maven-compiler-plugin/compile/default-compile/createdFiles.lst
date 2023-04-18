@@ -1,0 +1,12 @@
+cotuba\md\RenderizadorMDParaHTML.class
+cotuba\cli\LeitorOpcoesCLI.class
+cotuba\domain\Capitulo.class
+cotuba\application\Cotuba.class
+cotuba\md\impl\RenderizadorMDParaHTMLImpl.class
+cotuba\epub\GeradorEPUB.class
+cotuba\md\impl\RenderizadorMDParaHTMLImpl$1.class
+cotuba\cli\Main.class
+cotuba\domain\Ebook.class
+cotuba\pdf\impl\GeradorPDFImpl.class
+cotuba\epub\impl\GeradorEPUBImpl.class
+cotuba\pdf\GeradorPDF.class
