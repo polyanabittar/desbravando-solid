@@ -1,7 +1,7 @@
-package cotuba.pdf;
+package cotuba.application;
 
 import cotuba.domain.Ebook;
-import cotuba.pdf.impl.GeradorPDFComItext;
+import cotuba.pdf.impl.GeradorPDFComItext;  //ainda fere o DIP
 
 public interface GeradorPDF {
 

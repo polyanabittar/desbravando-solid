@@ -1,7 +1,7 @@
 package cotuba.md.impl;
 
 import cotuba.domain.Capitulo;
-import cotuba.md.RenderizadorMDParaHTML;
+import cotuba.application.RenderizadorMDParaHTML;
 import org.commonmark.node.AbstractVisitor;
 import org.commonmark.node.Heading;
 import org.commonmark.node.Node;
