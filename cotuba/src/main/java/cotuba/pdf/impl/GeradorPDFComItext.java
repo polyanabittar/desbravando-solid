@@ -10,13 +10,13 @@ import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.property.AreaBreakType;
 import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
-import cotuba.pdf.GeradorPDF;
+import cotuba.application.GeradorPDF;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class GeradorPDFImpl implements GeradorPDF {
+public class GeradorPDFComItext implements GeradorPDF {
 
     @Override
     public void gera(Ebook ebook) {
