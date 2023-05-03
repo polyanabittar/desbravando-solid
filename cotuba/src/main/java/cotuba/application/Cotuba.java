@@ -3,12 +3,14 @@ package cotuba.application;
 import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
 
-import java.nio.file.Path;
 import java.util.List;
 
 public class Cotuba {
 
-    public void execute(String formato, Path diretorioDosMD, Path arquivoDeSaida){
+    public void execute(ParametrosCotuba parametros) {
+        var formato = parametros.getFormato();
+        var arquivoDeSaida = parametros.getArquivoDeSaida();
+        var diretorioDosMD = parametros.getDiretorioDosMD();
 
         RenderizadorMDParaHTML renderizadorMDParaHTML = RenderizadorMDParaHTML.cria();
         List<Capitulo> capitulos = renderizadorMDParaHTML.renderiza(diretorioDosMD);
