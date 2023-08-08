@@ -2,7 +2,7 @@ package cotuba.application;
 
 import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
-import cotuba.md.impl.RenderizadorMDParaHTML;
+import cotuba.md.RenderizadorMDParaHTML;
 
 import java.util.List;
 

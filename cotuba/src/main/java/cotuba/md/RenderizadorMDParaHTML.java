@@ -1,4 +1,4 @@
-package cotuba.md.impl;
+package cotuba.md;
 
 import cotuba.domain.Capitulo;
 import org.commonmark.node.AbstractVisitor;
