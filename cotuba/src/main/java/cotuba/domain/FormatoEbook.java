@@ -1,8 +1,8 @@
 package cotuba.domain;
 
 import cotuba.application.GeradorEbook;
-import cotuba.epub.impl.GeradorEPUB;
-import cotuba.pdf.impl.GeradorPDF;
+import cotuba.epub.GeradorEPUB;
+import cotuba.pdf.GeradorPDF;
 
 public enum FormatoEbook {
     PDF(new GeradorPDF()),
